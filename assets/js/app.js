@@ -18,7 +18,6 @@
     btn.addEventListener('click', ()=>{
       const item = btn.closest('.faq-item');
       const wasOpen = item.classList.contains('open');
-      // close others
       document.querySelectorAll('.faq-item').forEach(i=>{
         i.classList.remove('open');
         i.querySelector('.faq-q').setAttribute('aria-expanded','false');
@@ -58,7 +57,6 @@
 
   const masonry = document.getElementById('masonry');
   if(masonry){
-    // remove noscript fallback if present
     masonry.innerHTML = '';
     galleryData.forEach((g,i)=>{
       const el = document.createElement('div');
@@ -117,17 +115,19 @@
     if(e.key==='ArrowRight') nav(1);
   });
 
-  // ---- HEADER shadow on scroll
+  // ---- HEADER: fixed + scrolled state (locked navbar)
   const hdr = document.querySelector('.site-header');
   let ticking=false;
+  function syncHeader(){
+    if(!hdr) return;
+    if(window.scrollY>8) hdr.classList.add('scrolled');
+    else hdr.classList.remove('scrolled');
+  }
+  syncHeader();
   window.addEventListener('scroll', ()=>{
     if(ticking) return;
     ticking=true;
-    requestAnimationFrame(()=>{
-      if(window.scrollY>8) hdr.style.boxShadow='0 1px 0 #e8e5e0, 0 6px 20px rgba(15,15,15,.06)';
-      else hdr.style.boxShadow='none';
-      ticking=false;
-    });
+    requestAnimationFrame(function(){ syncHeader(); ticking=false; });
   }, {passive:true});
 
   // ---- COPY helper for code blocks (optional)
@@ -137,10 +137,9 @@
     pre.addEventListener('click', ()=>{
       const t = pre.innerText;
       navigator.clipboard.writeText(t).then(()=>{
-        const orig = pre.style.background;
         pre.style.background='#1e1e1e';
-        setTimeout(()=> pre.style.background='#111', 300);
-      }).catch(()=>{});
+        setTimeout(function(){ pre.style.background='#111'; }, 300);
+      }).catch(function(){});
     });
   });
 })();
