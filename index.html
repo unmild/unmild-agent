@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unmild Agent</title>
+<meta name="description" content="Unmild Agent is a native Windows app from Microsoft Store. Bring your own API key, give it a folder, and watch it read, write, run and ship — with permissions you control and memory that persists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/images/welcome.png">
+<meta property="og:title" content="Unmild Agent — Native Windows agent">
+<meta property="og:description" content="BYOK native Windows agent. Filesystem, terminal and browser tools scoped to your project folder.">
+<meta property="og:type" content="website">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Unmild Agent home">
+      <span class="brand-mark" aria-hidden="true">UA</span>
+      <span>Unmild Agent <small>by UNMILD</small></span>
+      <span class="brand-note">Native Windows · BYOK · For <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a></span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#how-it-works">How to use</a>
+      <a href="#specs">Specs</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://unmild.store" target="_blank" rel="noopener" class="hide-mobile muted" style="font-size:13px;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px">unmild.store ↗</a>
+      <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-primary">Get on Store <span class="arrow">↗</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav-links">Menu +</button>
+    </div>
+  </div>
+  <div class="nav-mobile" aria-hidden="true">
+    <div class="container">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#how-it-works">How to use</a>
+      <a href="#specs">Specs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store ↗</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO — asymmetric, editorial, not centered -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <span>Microsoft Store · Paid app · Windows 10/11</span>
+      <span>9P3RXL6LD5F1 · BYOK · 15 screenshots, zero illustration fill</span>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>Software that <em>builds software</em> — directly in your folder.</h1>
+      </div>
+      <div class="hero-intro">
+        <p>Unmild Agent is a native Windows agent. Not a chat wrapper. It opens your project folder, reads and edits files, runs PowerShell, opens the browser to verify — and keeps going until the task is done. You hold the keys and the permissions.</p>
+        <div class="actions">
+          <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-primary">Get it on Microsoft Store <span class="arrow">↗</span></a>
+          <a href="#how-it-works" class="btn btn-ghost">How to use — 30 sec</a>
+        </div>
+        <div class="hero-meta">
+          <span>Multiple configurations</span>
+          <span>Smriti — persistent memory</span>
+          <span>Ask-first · Auto-edit · Full access</span>
+          <span>Tray-persistent</span>
+        </div>
+      </div>
+    </div>
+    <div class="trust" aria-label="At a glance">
+      <div><strong>BYOK, not hosted</strong><span>OpenAI-compatible & Anthropic. You paste base URL + API key, Test Connection hits <code>GET {base}/models</code>.</span></div>
+      <div><strong>Sandboxed autonomy</strong><span>Agent cannot escape your chosen folder via <code>..</code> or absolute paths.</span></div>
+      <div><strong>Effort you control</strong><span>Low 1024 → Max 16384 max_tokens per turn. Stop any time.</span></div>
+      <div><strong>Memory that sticks</strong><span><code>remember</code> notes injected every turn, survive restarts.</span></div>
+    </div>
+    <figure class="wide-shot">
+      <img src="assets/images/welcome.png" alt="Unmild Agent welcome screen — project folder picker and brand mark" width="1280" height="720" loading="eager" fetchpriority="high">
+      <figcaption><span>Welcome — pick a working folder to begin. Native window, 12px radius, maximized start.</span><span>assets/images/welcome.png</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CAPABILITIES — list, not cards -->
+<section class="section" id="capabilities">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Capabilities</div>
+      <div>
+        <h2>Everything the agent needs to finish work — <em>inside your folder</em>.</h2>
+        <p>No hosted intelligence. No browser IDE. A native binary that owns the working folder end-to-end and asks before it overreaches — if you tell it to.</p>
+      </div>
+    </div>
+    <div class="cap-list">
+      <div class="cap-row">
+        <div class="cap-num">01 — Loop</div>
+        <div>
+          <h3>Autonomous tool loop</h3>
+          <p>Each turn runs on a background thread. The model calls tools as JSON, the agent executes them locally and loops until the model stops. You watch live status lines and the transcript.</p>
+          <div class="cap-tags"><span>list_dir</span><span>read_file</span><span>write_file</span><span>delete_file</span><span>remember</span><span>run_command</span><span>open_url</span><span>screenshot</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/tools.png" alt="Available tools list inside the app" width="520" height="300" loading="lazy"><small>Tools — scoped to project folder · <code>src/tools.rs</code></small></div>
+      </div>
+      <div class="cap-row">
+        <div class="cap-num">02 — Native</div>
+        <div>
+          <h3>Truly native Windows</h3>
+          <p>Built in Rust 2021 with egui 0.28 + eframe/glow. Native file dialogs via <code>rfd 0.14</code>, window chrome via <code>windows-sys 0.60</code>, tray via <code>Shell_NotifyIcon</code>. No Electron.</p>
+          <div class="cap-tags"><span>windows-sys</span><span>Dwm · Shell · Gdi</span><span>rfd</span><span>MSIX auto-update</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/access.png" alt="Permission modal asking to approve an edit" width="520" height="300" loading="lazy"><small>Ask-first blocks the agent thread until you allow/deny.</small></div>
+      </div>
+      <div class="cap-row">
+        <div class="cap-num">03 — BYOK</div>
+        <div>
+          <h3>Bring any model — multiple configs</h3>
+          <p>Paste one or many base URLs + API keys. The app probes <code>GET {base}/models</code> via <code>candidate_bases [base, base+/v1]</code>. OpenAI-compatible uses <code>POST {base}/chat/completions</code> + <code>Authorization: Bearer</code>; Anthropic uses <code>POST {base}/messages</code> + <code>x-api-key</code> + <code>anthropic-version: 2023-06-01</code>.</p>
+          <div class="cap-tags"><span>OpenRouter</span><span>AgentRouter</span><span>OpenAI</span><span>Anthropic</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/costom_key.png" alt="Configuration screen with base URL and API key fields" width="520" height="300" loading="lazy"><small>Multiple configurations — switch per project.</small></div>
+      </div>
+      <div class="cap-row">
+        <div class="cap-num">04 — Smriti</div>
+        <div>
+          <h3>Smriti — memory that persists</h3>
+          <p><code>remember</code> notes are written per project on disk and injected into the system prompt every turn. Survives model switches, disconnects and restarts. Archive and edit views are built in.</p>
+          <div class="cap-tags"><span>%LOCALAPPDATA%\UnmildAgent</span><span>projects.json</span><span>history-{id}.sqlite</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/smriti_change.png" alt="Smriti edit view showing persistent notes" width="520" height="300" loading="lazy"><small>Smriti editor — durable, project-scoped.</small></div>
+      </div>
+      <div class="cap-row">
+        <div class="cap-num">05 — Controls</div>
+        <div>
+          <h3>Permissions & effort, per turn</h3>
+          <p>Three permission modes — <strong>Ask first</strong>, <strong>Auto-edit</strong>, <strong>Full access</strong>. Five effort budgets — Low 1024 / Medium 2048 / High 4096 / Ultra 8192 / Max 16384. Attach files, images (base64) or folders as prompt chips.</p>
+          <div class="cap-tags"><span>Attach</span><span>Model picker</span><span>Effort</span><span>Permissions</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/efforts.png" alt="Effort selector showing token budgets" width="520" height="300" loading="lazy"><small>Effort = max_tokens guard. You own the cost.</small></div>
+      </div>
+      <div class="cap-row">
+        <div class="cap-num">06 — Verify</div>
+        <div>
+          <h3>Terminal & browser, built in</h3>
+          <p><code>run_command</code> runs PowerShell in the project folder. <code>open_url</code> opens your default browser and <code>screenshot</code> verifies visually. Sanyojak connectors link external services when you enable them.</p>
+          <div class="cap-tags"><span>PowerShell</span><span>open_url</span><span>screenshot</span><span>Sanyojak</span></div>
+        </div>
+        <div class="cap-media"><img src="assets/images/sanjoyak.png" alt="Sanyojak connectors panel" width="520" height="300" loading="lazy"><small>Sanyojak — connectors, not magic.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE — overview only, dark band -->
+<section class="pov" id="architecture">
+  <div class="container">
+    <div class="pov-grid">
+      <div class="eyebrow">Architecture — overview</div>
+      <div>
+        <h2>Local app, remote intelligence. <em>Nothing hidden.</em></h2>
+      </div>
+    </div>
+    <div class="pov-bottom">
+      <p>Unmild Agent keeps it simple: the UI runs locally as a Rust desktop app; the model you configure is the only remote call. Turns are isolated per project, run in parallel on background threads, and drain progress through bounded channels. Files, memory (Smriti) and transcript history stay on disk under <code>%LOCALAPPDATA%\UnmildAgent\</code>. The only network probe before chat is <code>GET {base}/models</code> — everything else happens when you press Send. No hosted back end, no analytics to tune.</p>
+      <div>
+        <p style="color:#9fb0a6;font-size:13px;line-height:1.6">For the full engineering breakdown see <code>ARCHITECTURE.md</code> in the product repo (private). The site shows only the flow, not the internals. Security hinges on local sandbox + rustls, not obscurity.</p>
+        <p style="margin-top:16px"><a href="privacy.html" class="text-link">How data flows → Privacy <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">How to use</div>
+      <div>
+        <h2>From install to first build in four steps.</h2>
+        <p>Settings → Configuration → paste base URL + API key (multiple) → Test → use. That is the whole setup.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01 — Install</div>
+        <h3>Get it from the Store</h3>
+        <p>Open <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener">Microsoft Store</a>, install Unmild Agent, launch. Create or pick a project folder — the app is sandboxed to that path.</p>
+        <div class="step-code">Store ID: 9P3RXL6LD5F1<br>MSIX · Auto-updates</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02 — Configure</div>
+        <h3>Paste base URL + key</h3>
+        <p>Settings → Configuration → add one or many configs. Paste base URL verbatim and API key, then <strong>Test Connection</strong> — live <code>GET {base}/models</code> check.</p>
+        <div class="step-code">candidate_bases = [base, base+/v1]<br>Supports OpenAI + Anthropic</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03 — Choose</div>
+        <h3>Model, effort, permissions</h3>
+        <p>Picker lists models for your base URL. Set effort (1024–16384) and permissions (Ask-first / Auto-edit / Full). Attach files, images or folders as chips.</p>
+        <div class="step-code">Low 1024 · Max 16384<br>Images → base64</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04 — Build</div>
+        <h3>Send and approve</h3>
+        <p>Send. Watch thinking, status lines and file diffs. Approve if Ask-first blocks. Stop at any boundary. Reply shows time, file changes and token usage. Run multiple projects in parallel.</p>
+        <div class="step-code">Per-project threads<br>Tray-persistent</div>
+      </div>
+    </div>
+    <div class="usage-band">
+      <div>
+        <h3>The path in the app</h3>
+        <ol>
+          <li><strong>Launch</strong> → pick working folder</li>
+          <li><strong>Settings → Configuration</strong> → <strong>+ Add</strong> base URL + API key</li>
+          <li><strong>Test Connection</strong> — must succeed before chat</li>
+          <li><strong>Chat</strong> → choose model / effort / permissions → attach → Send</li>
+        </ol>
+        <p class="muted" style="font-size:13px;margin-top:10px">Tip: keep separate configs for OpenRouter, AgentRouter or self-hosted OpenAI-compatible gateways.</p>
+      </div>
+      <div class="usage-shot">
+        <img src="assets/images/configuration.png" alt="Configuration modal with Test Connection button" width="620" height="380" loading="lazy">
+        <p class="muted" style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;margin-top:10px">Configuration — verbatim base URL, plaintext key stored locally</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY — masonry, lightbox -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">In-app gallery</div>
+      <div>
+        <h2>Real screenshots, not mockups.</h2>
+        <p>All images vendored under <code>assets/images</code> — no external deps. Click to enlarge. 15 PNGs, 117–148 kB each.</p>
+      </div>
+    </div>
+    <div class="masonry" id="masonry">
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge welcome screen"><img src="assets/images/welcome.png" alt="Welcome screen" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Welcome</span><span>—</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge configuration"><img src="assets/images/configuration.png" alt="Configuration modal" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Configuration</span><span>Test {base}/models</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge custom chat"><img src="assets/images/costom_chat.png" alt="Custom chat composer" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Composer</span><span>Attach · Model · Effort</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge tools panel"><img src="assets/images/tools.png" alt="Tools panel" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Tools</span><span>Scoped to folder</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge model picker"><img src="assets/images/model.png" alt="Model picker" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Model</span><span>Hundreds via aggregator</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge efforts"><img src="assets/images/efforts.png" alt="Effort levels" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Effort</span><span>1024 → 16384</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge attach"><img src="assets/images/attach.png" alt="Attach chips" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Attach</span><span>Files · Images · Folders</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge access permission"><img src="assets/images/access.png" alt="Permission prompt" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Permissions</span><span>Ask-first</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge custom key"><img src="assets/images/costom_key.png" alt="Custom key config" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Keys</span><span>Multiple configs</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge custom color"><img src="assets/images/costom_color.png" alt="Color customization" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Theming</span><span>Tokens</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge new project"><img src="assets/images/new_project.png" alt="New project dialog" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>New project</span><span>Folder-scoped</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge settings"><img src="assets/images/seetings.png" alt="Settings screen" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Settings</span><span>Configuration entry</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge smriti archive"><img src="assets/images/smriti_achive.png" alt="Smriti archive" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Smriti — archive</span><span>Per-project</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge smriti change"><img src="assets/images/smriti_change.png" alt="Smriti edit" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Smriti — edit</span><span>remember</span></span></button></div>
+      <div class="masonry-item"><button data-lightbox aria-label="Enlarge sanyojak"><img src="assets/images/sanjoyak.png" alt="Sanyojak connectors" width="520" height="340" loading="lazy"><span class="masonry-cap"><span>Sanyojak</span><span>Connectors</span></span></button></div>
+    </div>
+    <noscript><p class="muted" style="font-size:13px;margin-top:12px">Enable JavaScript for the lightbox. Images are in <code>assets/images/</code>.</p></noscript>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="section" id="specs">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Specifications</div>
+      <div>
+        <h2>Hand-written Rust, not a wrapper.</h2>
+      </div>
+    </div>
+    <div class="specs">
+      <div class="specs-head">
+        <h3>What you get</h3>
+        <p>Native frame, DWM rounded corners (12px), system tray persistence, MSIX auto-updates. Segoe UI at runtime, Carlito OFL fallback in <code>assets/fonts</code>.</p>
+        <div style="margin-top:18px;display:grid;gap:10px">
+          <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:center">Open in Microsoft Store <span class="arrow">↗</span></a>
+          <p class="muted" style="font-size:11px;word-break:break-all">apps.microsoft.com/detail/9P3RXL6LD5F1</p>
+        </div>
+      </div>
+      <table class="spec-table" aria-label="Technical specifications">
+        <tbody>
+          <tr><th>Language & UI</th><td>Rust 2021, egui 0.28, eframe + glow, <code>rfd 0.14</code></td></tr>
+          <tr><th>Networking</th><td><code>ureq 2.10</code> (rustls) + <code>serde_json</code>, no async runtime, retries <code>MAX_SEND_RETRIES 12</code></td></tr>
+          <tr><th>Windows</th><td><code>windows-sys 0.60</code> — Dwm + Shell + Gdi + LibraryLoader</td></tr>
+          <tr><th>Window</th><td>Native frame, maximized start, 12px corner radius, tray-persistent</td></tr>
+          <tr><th>Distribution</th><td>Paid app on Microsoft Store — MSIX, auto-updates</td></tr>
+          <tr><th>Fonts</th><td>Segoe UI at runtime, Carlito OFL fallback in <code>assets/fonts</code></td></tr>
+          <tr><th>Structure</th><td><code>src/app.rs · theme.rs · state.rs · api.rs · tools.rs · ui/*</code></td></tr>
+          <tr><th>Size & window</th><td>~2,800 lines hand-written Rust, golden-ratio viewport</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="section" id="compare">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Why local</div>
+      <div>
+        <h2>Own the agent, not a tab.</h2>
+        <p>Cloud IDEs rent you a container. Unmild Agent runs where your files are.</p>
+      </div>
+    </div>
+    <div class="compare">
+      <div class="compare-col">
+        <h3>Unmild Agent</h3>
+        <ul>
+          <li><strong>Native Windows binary</strong> — single exe, starts maximized, tray-persistent</li>
+          <li><strong>Sandboxed to your folder</strong> — cannot escape via <code>..</code> or absolute paths</li>
+          <li><strong>You control effort & permission</strong> per turn</li>
+          <li><strong>Smriti persists</strong> across restarts and model switches</li>
+          <li><strong>Only network is your configured base URL</strong></li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h3>Typical web wrapper</h3>
+        <ul>
+          <li>Electron / webview, heavy, slow cold start</li>
+          <li>Closes when you close the window</li>
+          <li>One-size token budget</li>
+          <li>Context lost on refresh</li>
+          <li>Unclear sandbox boundaries</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div>
+        <div class="eyebrow">FAQ</div>
+        <h2>Direct answers.</h2>
+        <p class="muted" style="margin-top:12px;font-size:14px">Real info from the product, not generic SEO. Also available as FAQPage schema.</p>
+        <p style="margin-top:14px"><a href="https://unmild.store" target="_blank" rel="noopener" class="muted" style="font-size:13px">Support on unmild.store ↗</a></p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>What does Unmild Agent cost?</summary>
+          <p>Paid app on Microsoft Store — see the <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener">Store listing</a> for current price. Model usage is billed separately by your provider. Effort Low/Medium/High/Ultra/Max map to 1024/2048/4096/8192/16384 max_tokens.</p>
+        </details>
+        <details>
+          <summary>How does it work under the hood?</summary>
+          <p>Each turn runs on a background thread. The model is called via <code>ureq</code> (blocking HTTP, rustls). Tool calls return as JSON; the agent executes <code>list_dir/read_file/write_file/delete_file</code> inside the sandbox, posts permission requests via <code>Approver</code> channels if needed, and loops until the model stops. <code>AppState::tick</code> drains channels once per frame.</p>
+        </details>
+        <details>
+          <summary>How is it different from cloud coding agents?</summary>
+          <p>It runs locally and natively — real file access, native dialogs, tray persistence, no browser IDE, no Electron. You keep data in your folder; only calls to your configured base URL leave the device. Trade-off: Windows only, and you supply the model.</p>
+        </details>
+        <details>
+          <summary>How long does a task take?</summary>
+          <p>Seconds for small edits, minutes for multi-file refactors. Effort bounds the reply budget: Low is fastest/cheapest, Max allows deep multi-step loops. Stop any turn; the thread bails at the next boundary.</p>
+        </details>
+        <details>
+          <summary>Who should use it?</summary>
+          <p>Windows developers who want an agent that owns the working folder end-to-end with transparent permissions and durable memory. If you prefer local control over a cloud IDE, this is for you.</p>
+        </details>
+        <details>
+          <summary>What are the limitations?</summary>
+          <p>Windows-only desktop. Sandboxed filesystem — no access outside the working folder. Non-streaming chat completions today. You must provide a valid API key and reachable base URL. <code>Test Connection</code> is the only live probe before chat.</p>
+        </details>
+        <details>
+          <summary>Is my data private?</summary>
+          <p>The app runs locally; file content only leaves inside API calls to the provider you configured. <code>remember</code> notes and history are stored locally per project, not in a cloud. See <a href="privacy.html">Privacy</a>.</p>
+        </details>
+        <details>
+          <summary>Where do I get support?</summary>
+          <p>Visit <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a> — home for all Unmild products, docs and support. For the app listing see <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener">Microsoft Store</a>.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="section" id="support">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Support</div>
+      <div>
+        <h2>Help, contact, ownership.</h2>
+        <p>Unmild Agent is a product of <strong>UNMILD</strong>. The site is static on GitHub Pages — no cookies, no analytics.</p>
+      </div>
+    </div>
+    <div class="support-grid">
+      <div class="support-copy">
+        <h3>We keep support simple</h3>
+        <p class="muted" style="margin-top:10px;line-height:1.6">No chat widget, no tracker. If something breaks, tell us where it broke — include your Store version, Windows build, base URL host (not the key) and steps to reproduce.</p>
+        <div class="actions" style="margin-top:18px">
+          <a href="https://unmild.store" target="_blank" rel="noopener" class="btn btn-primary">Visit unmild.store <span class="arrow">↗</span></a>
+          <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-ghost">Microsoft Store</a>
+        </div>
+        <p class="muted" style="font-size:12px;margin-top:16px">GitHub Pages site: <code>~37 kB index · ~24 kB css</code> · Fonts via <code>fonts.googleapis.com</code></p>
+      </div>
+      <div class="support-card">
+        <div class="support-item">
+          <h3>Contact</h3>
+          <p>Owner: <strong>UNMILD</strong>. For privacy or terms matters use the subject <code>[Privacy]</code> via the contact on <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a> or the Store listing.</p>
+        </div>
+        <div class="support-item">
+          <h3>Updates</h3>
+          <p>App updates via Microsoft Store MSIX auto-update. Site updates are static — no background sync, no email unless you write us.</p>
+        </div>
+        <div class="support-item">
+          <h3>What to include</h3>
+          <p>Project type, working folder size, permission mode, effort level, model name, and the exact error line from the app toast/log. Never send your API key.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta">
+      <div>
+        <h2>Get Unmild Agent for Windows.</h2>
+        <p>Paid app on Microsoft Store. One click to install — then launch, set your API key, and go.</p>
+      </div>
+      <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-accent">Get it on Microsoft Store <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><span class="brand-mark" aria-hidden="true">UA</span> <strong style="letter-spacing:-.04em">Unmild Agent</strong> <span class="muted">by UNMILD</span></div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#capabilities">Capabilities</a>
+        <a href="#architecture">Architecture</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store ↗</a>
+        <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener">Store ↗</a>
+      </nav>
+    </div>
+    <div class="footer-word" aria-hidden="true">UNMILD</div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> UNMILD. All rights reserved.</span>
+      <span>Native Windows · BYOK · Built in Rust · No cookies · No analytics</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+  <button class="lightbox-close" id="lightboxClose" type="button">Close —</button>
+  <img id="lightboxImg" alt="">
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Unmild Agent</title>
+<meta name="description" content="Privacy policy for Unmild Agent — local-first Windows app, BYOK, no cookies, no analytics. Smriti and history stay on disk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" aria-label="Unmild Agent home">
+      <span class="brand-mark" aria-hidden="true">UA</span>
+      <span>Unmild Agent <small>by UNMILD</small></span>
+      <span class="brand-note">Native Windows · BYOK · For <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a></span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="index.html#architecture">Architecture</a>
+      <a href="index.html#how-it-works">How to use</a>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://unmild.store" target="_blank" rel="noopener" class="hide-mobile muted" style="font-size:13px;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px">unmild.store ↗</a>
+      <a href="https://apps.microsoft.com/detail/9P3RXL6LD5F1?hl=en-in&gl=IN&ocid=pdpshare" target="_blank" rel="noopener" class="btn btn-primary">Get on Store <span class="arrow">↗</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav-links">Menu +</button>
+    </div>
+  </div>
+  <div class="nav-mobile" aria-hidden="true">
+    <div class="container">
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="index.html#architecture">Architecture</a>
+      <a href="index.html#how-it-works">How to use</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store ↗</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-intro">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Unmild Agent</a> <span aria-hidden="true">/</span> <span aria-current="page">Privacy policy</span></nav>
+    <h1>Privacy policy — <em>local by default</em>.</h1>
+    <p class="lede">Unmild Agent runs on your Windows device. No account, no hosted agent, no analytics. Your project files, memory and keys stay on disk unless you send them to a model provider you chose. This page tells you exactly what happens.</p>
+    <p class="muted" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-top:18px">Effective 8 May 2026 · Owner: UNMILD · For updates visit <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a> or the Microsoft Store listing 9P3RXL6LD5F1</p>
+    <div class="callout" style="margin-top:18px"><strong>TL;DR</strong> — The app is offline except for calls to the API base URL you configure. Website is static on GitHub Pages: no cookies, no analytics, ~37 kB index + ~24 kB CSS. Google Fonts loads from <code>fonts.googleapis.com</code> when you visit the site. Everything else is local.</div>
+  </div>
+</div>
+
+<div class="container legal-layout">
+  <nav class="toc" aria-label="On this page">
+    <strong>On this page</strong>
+    <ol>
+      <li><a href="#s1">Introduction</a></li>
+      <li><a href="#s2">What data Unmild accesses</a></li>
+      <li><a href="#s3">How data flows</a></li>
+      <li><a href="#s4">Third-party AI providers</a></li>
+      <li><a href="#s5">API keys and secrets</a></li>
+      <li><a href="#s6">Storage and retention — Smriti</a></li>
+      <li><a href="#s7">Sharing and disclosure</a></li>
+      <li><a href="#s8">Security measures</a></li>
+      <li><a href="#s9">Your privacy rights</a></li>
+      <li><a href="#s10">International transfers</a></li>
+      <li><a href="#s11">Children and sensitive information</a></li>
+      <li><a href="#s12">Updates and contact</a></li>
+    </ol>
+  </nav>
+
+  <article class="legal">
+    <h2 id="s1">1 — Introduction</h2>
+    <p>This policy covers the Unmild Agent desktop app for Windows and the static marketing site at this domain. The app is a paid Microsoft Store app (ID <code>9P3RXL6LD5F1</code>) distributed as MSIX with auto-updates. It has no account system. The site is hosted on GitHub Pages and does not run server code.</p>
+    <p>References to <strong>UNMILD</strong> mean the publisher of the app and site. When we say “you”, we mean the person who installed the app or visited the site. If you do not agree with this policy, do not use the app or site.</p>
+
+    <h2 id="s2">2 — What data Unmild accesses</h2>
+    <p><strong>Unmild itself accesses nothing from your device.</strong> We do not operate a back end that receives your files, prompts or keys. The app reads only what you give it — the working folder you pick, files you attach, and settings you enter.</p>
+    <p>Concretely, local processing includes:</p>
+    <ul>
+      <li>Listing and reading files under the project folder you chose (sandboxed — <code>..</code> and absolute paths outside the folder are blocked).</li>
+      <li>Writing or deleting files only when the agent executes <code>write_file</code> / <code>delete_file</code> inside that folder, subject to your permission mode.</li>
+      <li>Running PowerShell via <code>run_command</code> in the project directory, and opening URLs + screenshots via <code>open_url</code> / <code>screenshot</code> on your machine.</li>
+      <li>Storing per-project memory via <code>remember</code> (Smriti) and chat history locally — see §6.</li>
+    </ul>
+    <div class="callout"><strong>No bulk collection.</strong> We do not scan your drive, collect telemetry, or sync your projects to UNMILD. The only data that leaves the device is what you send to the API provider you configured.</div>
+
+    <h2 id="s3">3 — How data flows</h2>
+    <p>Flow is deliberately narrow. Until you configure a provider and press Test or Send, the app makes no network requests.</p>
+    <div class="kv" role="table" aria-label="Network calls">
+      <div>Base URL</div><div>Stored verbatim as you typed it; normalized via <code>normalize_base</code> and probed as <code>candidate_bases = [base, base + "/v1"]</code>.</div>
+      <div>Probe</div><div><code>GET {base}/models</code> when you click <strong>Test Connection</strong> — the only call before chat.</div>
+      <div>Chat</div><div><code>POST {base}/chat/completions</code> (OpenAI-compatible) with <code>Authorization: Bearer &lt;apiKey&gt;</code>, or <code>POST {base}/messages</code> (Anthropic) with <code>x-api-key</code> and <code>anthropic-version: 2023-06-01</code>. Model decides tool calls; agent executes locally and loops. Retries up to <code>MAX_SEND_RETRIES 12</code>.</div>
+      <div>Images</div><div>Attached images are base64-encoded and sent inside the chat payload to the provider. Limit <code>MAX_IMAGE 5 MiB</code> per image.</div>
+      <div>Transcripts</div><div>Per-turn JSONL at <code>work-{project}-{run}.jsonl</code> on disk — not uploaded anywhere by UNMILD.</div>
+    </div>
+    <p>That is the full path: local sandbox → your configured base URL → back. No UNMILD proxy sits in the middle, and we do not log your prompts.</p>
+
+    <h2 id="s4">4 — Third-party AI providers</h2>
+    <p>When you send a message, file excerpts, attached images and Smriti notes you chose are transmitted to the provider for that configuration — for example OpenAI, Anthropic, OpenRouter, AgentRouter, or any OpenAI-compatible gateway you entered. That provider becomes the data controller for that request.</p>
+    <ul>
+      <li>OpenAI-compatible: <code>supported_endpoint_types</code> includes <code>chat/completions</code>; auth via Bearer token.</li>
+      <li>Anthropic: <code>/messages</code> with <code>x-api-key</code>. The app sets the required version header automatically.</li>
+      <li>Each configuration is separate — switching config switches provider. You are responsible for reviewing that provider’s terms and privacy policy.</li>
+    </ul>
+    <div class="callout"><strong>We do not control third parties.</strong> UNMILD cannot see or delete data once it reaches your provider. Contact the provider directly for retention and training-opt-out.</div>
+
+    <h2 id="s5">5 — API keys and secrets</h2>
+    <p>API keys are <strong>stored in plaintext on your device</strong> alongside your project metadata — this is intentional for a local-only app with no cloud vault.</p>
+    <ul>
+      <li>Keys never leave except inside authenticated requests to the base URL you entered for that key. They are never sent to UNMILD.</li>
+      <li>Anyone with access to your Windows profile or a disk image can read them. Use Windows device encryption, screen lock, and per-provider key scoping.</li>
+      <li>Do not paste keys into screenshots, issues or chat exports you share. Rotate a key with the provider if you suspect exposure.</li>
+      <li>UNMILD has no ability to recover or reset your provider keys.</li>
+    </ul>
+
+    <h2 id="s6">6 — Storage and retention — Smriti</h2>
+    <p>Everything persists locally under <code>%LOCALAPPDATA%\UnmildAgent\</code>:</p>
+    <div class="kv" role="table" aria-label="Local storage">
+      <div>projects.json</div><div>Project list, folder paths, per-project settings.</div>
+      <div>history-{id}.sqlite</div><div>Chat history per project, FTS5 + WAL.</div>
+      <div>work-{project}-{run}.jsonl</div><div>Per-turn tool trace and token usage.</div>
+      <div>Smriti</div><div><code>remember</code> notes injected into the system prompt every turn; survive model switches, disconnects and restarts. Editable via Smriti archive/change views.</div>
+    </div>
+    <p>Retention is yours to control. Deleting a project in the app removes its JSON entry and associated history/notes on disk. Uninstalling the app does not necessarily purge <code>%LOCALAPPDATA%\UnmildAgent\</code> — remove that folder manually for a full wipe. No cloud backup is created by UNMILD.</p>
+
+    <h2 id="s7">7 — Sharing and disclosure</h2>
+    <p>UNMILD does not sell, rent, or share your data. We disclose only if required by law, to enforce our terms, or to protect rights and safety — and even then we have little to disclose because data lives on your device or with your chosen provider.</p>
+    <p>The static site has no cookies and no analytics. No advertising trackers are set by UNMILD. If you click through to <code>unmild.store</code> or <code>apps.microsoft.com</code>, those sites apply their own policies.</p>
+
+    <h2 id="s8">8 — Security measures</h2>
+    <ul>
+      <li><strong>Transport:</strong> API calls use <code>ureq + rustls</code> (TLS via rustls, no custom CA).</li>
+      <li><strong>Sandbox:</strong> Filesystem tools are scoped to the working folder; path traversal is rejected. Terminal runs as your user, in that folder.</li>
+      <li><strong>Bounds:</strong> Image attachments capped at <code>MAX_IMAGE 5 MiB</code>; outbound retries capped at <code>12</code>; no background sync.</li>
+      <li><strong>Limitations:</strong> Keys are plaintext on disk and memory notes are not encrypted at rest beyond OS protections. Treat the device as the security boundary.</li>
+    </ul>
+    <div class="callout"><strong>Hardening tips:</strong> keep Windows Update on, use BitLocker/device encryption, lock the screen, scope keys per project, and prefer Ask-first permission mode for unfamiliar folders.</div>
+
+    <h2 id="s9">9 — Your privacy rights</h2>
+    <p>You have the usual rights depending on where you live. Because UNMILD holds no hosted copy of your content, most requests are fulfilled by you acting locally — delete projects, clear <code>%LOCALAPPDATA%\UnmildAgent\</code>, or rotate provider keys.</p>
+    <ul>
+      <li><strong>GDPR (EEA/UK):</strong> Legal bases are contract (to provide the app you paid for), legitimate interest (security), and consent (when you choose to contact us). Access/erasure/portability can be exercised by deleting local data; contact us for questions. We aim to respond within 30 days.</li>
+      <li><strong>CCPA (California):</strong> No sale or sharing of personal information by UNMILD. Request access/deletion via the contact below; we will confirm locally-held scope.</li>
+      <li><strong>Other regions:</strong> Similar access, correction and deletion rights apply under local law.</li>
+    </ul>
+
+    <h2 id="s10">10 — International transfers</h2>
+    <p>The app and site make no UNMILD-controlled cross-border transfers. When you configure a provider, your prompts, file excerpts and images are transferred to that provider’s infrastructure — which may be outside your country. Check the provider’s data residency statement. Site visitors fetch Google Fonts from <code>fonts.googleapis.com</code>, which may involve a cross-border request to Google.</p>
+
+    <h2 id="s11">11 — Children and sensitive information</h2>
+    <p>The app and site are not directed to children under 13 (or 16 where applicable) and are not intended to process children’s data. Do not use the agent to handle sensitive categories (health, financial, biometric, etc.) unless you have a lawful basis and explicit permission — and understand that such content will be sent to your configured provider if included in context.</p>
+
+    <h2 id="s12">12 — Policy updates and contact</h2>
+    <p>We may update this policy when the app or law changes. Material changes will be reflected by the Effective date above and, where appropriate, noted on <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a> and the Store listing. Continued use after the effective date means acceptance.</p>
+    <p>Owner: <strong>UNMILD</strong>. For privacy questions, deletion requests or concerns, use subject <code>[Privacy]</code> via the contact on <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store</a> or the support link on the Microsoft Store page for Unmild Agent.</p>
+    <div class="callout"><strong>No cookies, no trackers.</strong> The site sets no cookies and runs no analytics scripts. If you block <code>fonts.googleapis.com</code>, the site falls back to system fonts — nothing else breaks.</div>
+  </article>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div><span class="brand-mark" aria-hidden="true">UA</span> <strong style="letter-spacing:-.04em">Unmild Agent</strong> <span class="muted">by UNMILD</span></div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="https://unmild.store" target="_blank" rel="noopener">unmild.store ↗</a>
+      </nav>
+    </div>
+    <div class="footer-word" aria-hidden="true">UNMILD</div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> UNMILD. All rights reserved.</span>
+      <span>Static site · No cookies · Effective 8 May 2026</span>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js" defer></script>
+</body>
+</html>
